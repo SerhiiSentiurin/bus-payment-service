@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class AppExceptionHandler {
 
     @ExceptionHandler
-    public ResponseEntity<ExceptionResponseDto> handleException(PaymentNotFoundException exception) {
+    public ResponseEntity<ExceptionResponseDto> handleException(AppException exception) {
         ExceptionResponseDto exceptionResponseDto = new ExceptionResponseDto(HttpStatus.NOT_FOUND.value(), exception.getMessage(), LocalDateTime.now());
         log.error(exception.getMessage(), exception);
         return new ResponseEntity<>(exceptionResponseDto, HttpStatus.NOT_FOUND);
