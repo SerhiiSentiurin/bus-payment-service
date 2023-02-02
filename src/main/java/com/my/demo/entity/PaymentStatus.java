@@ -1,13 +1,13 @@
 package com.my.demo.entity;
 
-import java.util.Random;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
-public enum PaymentStatus {
-    NEW, FAILED, DONE;
-
-    public static <T extends Enum<?>> T randomStatus(Class<T> tClass){
-        Random random = new Random();
-        int index = random.nextInt(tClass.getEnumConstants().length);
-        return tClass.getEnumConstants()[index];
+public class PaymentStatus {
+    public static String randomStatus(){
+        List<String> statuses = Arrays.asList("NEW", "FAILED", "DONE");
+        Collections.shuffle(statuses);
+        return statuses.stream().findFirst().orElse(null);
     }
 }

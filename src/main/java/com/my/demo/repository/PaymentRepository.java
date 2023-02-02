@@ -1,4 +1,4 @@
-package com.my.demo.dao;
+package com.my.demo.repository;
 
 import com.my.demo.dto.PaymentStatusDto;
 import com.my.demo.entity.Payment;
@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface PaymentDao extends CrudRepository<Payment, Long> {
+public interface PaymentRepository extends CrudRepository<Payment, Long> {
 
     @Query("select * from payments where status='FAILED' OR status='NEW'")
     List<PaymentStatusDto> findByFailedAndNewStatus();
