@@ -1,12 +1,13 @@
 package com.my.demo.repository;
 
 import com.my.demo.entity.Payment;
+import com.my.demo.entity.PaymentStatus;
 import org.springframework.data.repository.CrudRepository;
+
+import java.util.List;
 
 
 public interface PaymentRepository extends CrudRepository<Payment, Long> {
 
-//    @Query("select * from payments where status='FAILED' OR status='NEW'")
-//    List<PaymentStatusDto> findByFailedAndNewStatus();
-
+    List<Payment> findAllByStatus(PaymentStatus status);
 }

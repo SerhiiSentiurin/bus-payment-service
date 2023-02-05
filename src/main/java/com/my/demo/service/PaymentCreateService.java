@@ -6,20 +6,20 @@ import com.my.demo.dto.CreatePaymentDto;
 import com.my.demo.entity.Payment;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 
 
 @Service
 @RequiredArgsConstructor
 public class PaymentCreateService {
     private final PaymentRepository paymentRepository;
-    @Transactional
-    public Long createPayment(CreatePaymentDto dto) {
 
+    public Long createPayment(CreatePaymentDto dto) {
         Payment payment = Payment.builder()
+                .firstName(dto.getFirstName())
+                .lastName(dto.getLastName())
+                .patronymic(dto.getPatronymic())
                 .amount(dto.getAmount())
-                .status(PaymentStatus.randomStatus())
+                .status(PaymentStatus.NEW)
                 .build();
         return paymentRepository.save(payment).getId();
     }

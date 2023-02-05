@@ -11,6 +11,9 @@ import org.springframework.data.relational.core.mapping.Table;
 public class Payment {
     @Id
     private Long id;
+    private String firstName;
+    private String lastName;
+    private String patronymic;
     private Double amount;
-    private String status;
+    private PaymentStatus status;
 }
